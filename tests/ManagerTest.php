@@ -36,4 +36,23 @@ class ManagerTest extends TestCase {
 	}
 
 
+	/**
+	 * Can set a named Feature
+	 *
+	 * @return void
+	 */
+	public function testCanSetANamedFeature() {
+
+		$feature_name = 'test-feature';
+
+		$feature = \Mockery::mock('\Slab\Features\FeatureInterface');
+
+		$manager = \Slab\Features\Manager::instance();
+		$manager->set($feature_name, $feature);
+
+		$this->assertEquals($feature, $manager->get($feature_name));
+
+	}
+
+
 }
