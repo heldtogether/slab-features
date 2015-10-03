@@ -12,12 +12,7 @@ class TimedFeatureTest extends TestCase {
 	 */
 	public function setUp() {
 		parent::setUp();
-
 		date_default_timezone_set('UTC');
-
-		$knownDate = Carbon::create(2015, 10, 03);
-		Carbon::setTestNow($knownDate);
-
 	}
 
 
@@ -138,6 +133,9 @@ class TimedFeatureTest extends TestCase {
 	 */
 	public function testFeatureIsInactiveBeforeStartTime() {
 
+		$knownDate = Carbon::create(2015, 10, 03);
+		Carbon::setTestNow($knownDate);
+
 		$start_time = '2020-01-01 00:00:00';
 
 		$feature = new \Slab\Features\TimedFeature();
@@ -154,6 +152,9 @@ class TimedFeatureTest extends TestCase {
 	 * @return void
 	 */
 	public function testFeatureIsActiveAfterStartTime() {
+
+		$knownDate = Carbon::create(2015, 10, 03);
+		Carbon::setTestNow($knownDate);
 
 		$start_time = '1970-01-01 00:00:00';
 
@@ -172,6 +173,9 @@ class TimedFeatureTest extends TestCase {
 	 */
 	public function testFeatureIsActiveBeforeEndTime() {
 
+		$knownDate = Carbon::create(2015, 10, 03);
+		Carbon::setTestNow($knownDate);
+
 		$end_time = '2020-01-01 00:00:00';
 
 		$feature = new \Slab\Features\TimedFeature();
@@ -189,10 +193,45 @@ class TimedFeatureTest extends TestCase {
 	 */
 	public function testFeatureIsInactiveAfterEndTime() {
 
+		$knownDate = Carbon::create(2015, 10, 03);
+		Carbon::setTestNow($knownDate);
+
 		$end_time = '1970-01-01 00:00:00';
 
 		$feature = new \Slab\Features\TimedFeature();
 		$feature->setEndTime($end_time);
+
+		$this->assertFalse($feature->active());
+
+	}
+
+
+	/**
+	 * Feature is inactive, then active, then inactive
+	 *
+	 * @return void
+	 */
+	public function testFeatureIsInactiveThenActiveThenInactive() {
+
+		$start_time = '2015-10-04 00:00:00';
+		$end_time = '2015-10-06 00:00:00';
+
+		$feature = new \Slab\Features\TimedFeature();
+		$feature->setStartTime($start_time);
+		$feature->setEndTime($end_time);
+
+		$knownDate = Carbon::create(2015, 10, 03);
+		Carbon::setTestNow($knownDate);
+
+		$this->assertFalse($feature->active());
+
+		$knownDate = Carbon::create(2015, 10, 05);
+		Carbon::setTestNow($knownDate);
+
+		$this->assertTrue($feature->active());
+
+		$knownDate = Carbon::create(2015, 10, 07);
+		Carbon::setTestNow($knownDate);
 
 		$this->assertFalse($feature->active());
 
