@@ -2,6 +2,8 @@
 
 namespace Slab\Features;
 
+use Carbon\Carbon;
+
 /**
  * Timed Feature class
  *
@@ -12,7 +14,7 @@ class TimedFeature implements FeatureInterface {
 
 
 	/**
-	 * @var mixed
+	 * @var Carbon\Carbon
 	 */
 	protected $start_time;
 
@@ -32,7 +34,7 @@ class TimedFeature implements FeatureInterface {
 	/**
 	 * Get the start time of the Feature
 	 *
-	 * @return mixed
+	 * @return Carbon\Carbon
 	 */
 	public function startTime() {
 
@@ -44,10 +46,16 @@ class TimedFeature implements FeatureInterface {
 	/**
 	 * Set the time the Feature should be active
 	 *
-	 * @param mixed $start_time
+	 * @param string $start_time
 	 * @return void
 	 */
 	public function setStartTime($start_time) {
+
+		try {
+			$date = new Carbon($start_time);
+		} catch (\Exception $e) {
+			throw new InvalidArgumentException();
+		}
 
 		$this->start_time = $start_time;
 

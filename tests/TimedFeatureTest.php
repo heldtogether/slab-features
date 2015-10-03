@@ -5,6 +5,17 @@ class TimedFeatureTest extends TestCase {
 
 
 	/**
+	 * Set up the tests
+	 *
+	 * @return void
+	 */
+	public function setUp() {
+		parent::setUp();
+		date_default_timezone_set('UTC');
+	}
+
+
+	/**
 	 * Can create a Feature
 	 *
 	 * @return void
@@ -59,6 +70,23 @@ class TimedFeatureTest extends TestCase {
 		$feature->setStartTime($start_time);
 
 		$this->assertEquals($start_time, $feature->startTime());
+
+	}
+
+
+	/**
+	 * Cannot set invalid time as Feature start time
+	 *
+	 * @return void
+	 */
+	public function testCannotSetInvalidTimeAsFeatureStartTime() {
+
+		$start_time = 'fbneiowbfiuoebufew';
+
+		$this->setExpectedException('\Slab\Features\InvalidArgumentException');
+
+		$feature = new \Slab\Features\TimedFeature();
+		$feature->setStartTime($start_time);
 
 	}
 

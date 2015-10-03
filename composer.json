@@ -2,7 +2,9 @@
 	"name": "wp-slab/slab-features",
 	"license": "MIT",
 	"type": "wordpress-plugin",
-	"require": {},
+	"require": {
+		"nesbot/carbon": "^1.20"
+	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"mockery/mockery": "0.9.*"
