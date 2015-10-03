@@ -32,4 +32,18 @@ class FeatureTest extends TestCase {
 	}
 
 
+	/**
+	 * Feature is not active by default
+	 *
+	 * @return void
+	 */
+	public function testFeatureIsNotActiveByDefault() {
+
+		$feature = new \Slab\Features\Feature();
+
+		$this->assertFalse($feature->active());
+
+	}
+
+
 }

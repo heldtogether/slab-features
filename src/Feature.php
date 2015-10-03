@@ -18,7 +18,7 @@ class Feature implements FeatureInterface {
 	 */
 	public function active() {
 
-		//
+		return false;
 
 	}
 
