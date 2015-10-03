@@ -63,7 +63,7 @@ class TimedFeature implements FeatureInterface {
 			throw new InvalidArgumentException();
 		}
 
-		$this->start_time = $start_time;
+		$this->start_time = $date;
 
 	}
 
@@ -94,7 +94,7 @@ class TimedFeature implements FeatureInterface {
 			throw new InvalidArgumentException();
 		}
 
-		$this->end_time = $end_time;
+		$this->end_time = $date;
 
 	}
 
