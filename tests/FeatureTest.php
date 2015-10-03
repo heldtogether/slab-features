@@ -46,4 +46,19 @@ class FeatureTest extends TestCase {
 	}
 
 
+	/**
+	 * Can set Feature as active
+	 *
+	 * @return void
+	 */
+	public function testCanSetFeatureAsActive() {
+
+		$feature = new \Slab\Features\Feature();
+		$feature->setActive(true);
+
+		$this->assertTrue($feature->active());
+
+	}
+
+
 }
