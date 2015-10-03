@@ -32,6 +32,13 @@ class TimedFeature implements FeatureInterface {
 	 */
 	public function active() {
 
+		$now = new Carbon();
+
+		if ($this->start_time) {
+			return $now->gte($this->start_time);
+
+		}
+
 		return false;
 
 	}

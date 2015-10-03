@@ -1,5 +1,6 @@
 <?php namespace Tests;
 
+use Carbon\Carbon;
 
 class TimedFeatureTest extends TestCase {
 
@@ -11,7 +12,12 @@ class TimedFeatureTest extends TestCase {
 	 */
 	public function setUp() {
 		parent::setUp();
+
 		date_default_timezone_set('UTC');
+
+		$knownDate = Carbon::create(2015, 10, 03);
+		Carbon::setTestNow($knownDate);
+
 	}
 
 
@@ -121,6 +127,23 @@ class TimedFeatureTest extends TestCase {
 
 		$feature = new \Slab\Features\TimedFeature();
 		$feature->setEndTime($end_time);
+
+	}
+
+
+	/**
+	 * Feature is active after start date
+	 *
+	 * @return void
+	 */
+	public function testFeatureIsActiveAfterStartTime() {
+
+		$start_time = '1970-01-01 00:00:00';
+
+		$feature = new \Slab\Features\TimedFeature();
+		$feature->setStartTime($start_time);
+
+		$this->assertTrue($feature->active());
 
 	}
 
