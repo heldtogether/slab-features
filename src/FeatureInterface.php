@@ -19,13 +19,4 @@ interface FeatureInterface {
 	public function active();
 
 
-	/**
-	 * Set the active state of the feature
-	 *
-	 * @param bool $active
-	 * @return void
-	 */
-	public function setActive($active);
-
-
 }
