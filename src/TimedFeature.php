@@ -34,12 +34,15 @@ class TimedFeature implements FeatureInterface {
 
 		$now = new Carbon();
 
-		if ($this->start_time) {
+		if ($this->start_time && $this->end_time) {
+			return ($now->gte($this->start_time) && $now->lte($this->end_time));
+		} else if ($this->start_time) {
 			return $now->gte($this->start_time);
-
+		} else if ($this->end_time) {
+			return $now->lte($this->end_time);
+		} else {
+			return true;
 		}
-
-		return true;
 
 	}
 
