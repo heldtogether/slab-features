@@ -148,4 +148,21 @@ class TimedFeatureTest extends TestCase {
 	}
 
 
+	/**
+	 * Feature is inactive after start date
+	 *
+	 * @return void
+	 */
+	public function testFeatureIsInactiveAfterStartTime() {
+
+		$end_time = '1970-01-01 00:00:00';
+
+		$feature = new \Slab\Features\TimedFeature();
+		$feature->setEndTime($end_time);
+
+		$this->assertFalse($feature->active());
+
+	}
+
+
 }
