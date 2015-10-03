@@ -46,4 +46,21 @@ class TimedFeatureTest extends TestCase {
 	}
 
 
+	/**
+	 * Can set time the Feature should become active
+	 *
+	 * @return void
+	 */
+	public function testCanSetTimeFeatureBecomesActive() {
+
+		$start_time = '2015-10-03 00:00:00';
+
+		$feature = new \Slab\Features\TimedFeature();
+		$feature->setStartTime($start_time);
+
+		$this->assertEquals($start_time, $feature->startTime());
+
+	}
+
+
 }
