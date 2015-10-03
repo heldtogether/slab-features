@@ -50,7 +50,7 @@ class TimedFeatureTest extends TestCase {
 
 
 	/**
-	 * Feature is not active by default
+	 * Feature is active by default
 	 *
 	 * @return void
 	 */
@@ -58,7 +58,7 @@ class TimedFeatureTest extends TestCase {
 
 		$feature = new \Slab\Features\TimedFeature();
 
-		$this->assertFalse($feature->active());
+		$this->assertTrue($feature->active());
 
 	}
 

@@ -39,7 +39,7 @@ class TimedFeature implements FeatureInterface {
 
 		}
 
-		return false;
+		return true;
 
 	}
 
