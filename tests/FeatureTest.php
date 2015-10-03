@@ -18,4 +18,18 @@ class FeatureTest extends TestCase {
 	}
 
 
+	/**
+	 * Can check if a Feature is active
+	 *
+	 * @return void
+	 */
+	public function testCanCheckIfFeatureIsActive() {
+
+		$feature = new \Slab\Features\Feature();
+
+		$this->assertInstanceOf('\Slab\Features\FeatureInterface', $feature);
+
+	}
+
+
 }

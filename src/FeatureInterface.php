@@ -3,12 +3,12 @@
 namespace Slab\Features;
 
 /**
- * Basic Feature class
+ * Feature Interface
  *
  * @package default
  * @author Josh Sephton
  */
-class Feature implements FeatureInterface {
+interface FeatureInterface {
 
 
 	/**
@@ -16,11 +16,7 @@ class Feature implements FeatureInterface {
 	 *
 	 * @return bool
 	 */
-	public function active() {
-
-		//
-
-	}
+	public function active();
 
 
 }
