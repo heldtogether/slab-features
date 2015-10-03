@@ -20,6 +20,12 @@ class TimedFeature implements FeatureInterface {
 
 
 	/**
+	 * @var Carbon\Carbon
+	 */
+	protected $end_time;
+
+
+	/**
 	 * Check if the Feature is active
 	 *
 	 * @return bool
@@ -58,6 +64,37 @@ class TimedFeature implements FeatureInterface {
 		}
 
 		$this->start_time = $start_time;
+
+	}
+
+
+	/**
+	 * Get the end time of the Feature
+	 *
+	 * @return Carbon\Carbon
+	 */
+	public function endTime() {
+
+		return $this->end_time;
+
+	}
+
+
+	/**
+	 * Set the time the Feature should become inactive
+	 *
+	 * @param string $end_time
+	 * @return void
+	 */
+	public function setEndTime($end_time) {
+
+		try {
+			$date = new Carbon($end_time);
+		} catch (\Exception $e) {
+			throw new InvalidArgumentException();
+		}
+
+		$this->end_time = $end_time;
 
 	}
 

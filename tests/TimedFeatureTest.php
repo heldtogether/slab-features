@@ -91,4 +91,38 @@ class TimedFeatureTest extends TestCase {
 	}
 
 
+	/**
+	 * Can set time the Feature should become inactive
+	 *
+	 * @return void
+	 */
+	public function testCanSetTimeFeatureBecomesInactive() {
+
+		$end_time = '2015-10-03 00:00:00';
+
+		$feature = new \Slab\Features\TimedFeature();
+		$feature->setEndTime($end_time);
+
+		$this->assertEquals($end_time, $feature->endTime());
+
+	}
+
+
+	/**
+	 * Cannot set invalid time as Feature end time
+	 *
+	 * @return void
+	 */
+	public function testCannotSetInvalidTimeAsFeatureEndTime() {
+
+		$end_time = 'fbneiowbfiuoebufew';
+
+		$this->setExpectedException('\Slab\Features\InvalidArgumentException');
+
+		$feature = new \Slab\Features\TimedFeature();
+		$feature->setEndTime($end_time);
+
+	}
+
+
 }
