@@ -183,11 +183,11 @@ class TimedFeatureTest extends TestCase {
 
 
 	/**
-	 * Feature is inactive after start date
+	 * Feature is inactive after end date
 	 *
 	 * @return void
 	 */
-	public function testFeatureIsInactiveAfterStartTime() {
+	public function testFeatureIsInactiveAfterEndTime() {
 
 		$end_time = '1970-01-01 00:00:00';
 
