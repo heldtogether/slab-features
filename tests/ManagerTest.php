@@ -69,4 +69,25 @@ class ManagerTest extends TestCase {
 	}
 
 
+	/**
+	 * Manager loads Config if provided
+	 *
+	 * @return void
+	 */
+	public function testManagerLoadsConfigIfProvided() {
+
+		$feature_name = 'test-feature';
+
+		$feature = \Mockery::mock('\Slab\Features\FeatureInterface');
+
+		$config = \Mockery::mock('\Slab\Features\ConfigInterface');
+		$config->shouldReceive('rules')->once();
+
+		$manager = new \Slab\Features\Manager($config);
+		$manager->set($feature_name, $feature);
+		$manager->get($feature_name);
+
+	}
+
+
 }
