@@ -11,6 +11,20 @@ class ManagerTest extends TestCase {
 	 */
 	public function testCanGetManagerInstance() {
 
+		$manager = new \Slab\Features\Manager();
+
+		$this->assertInstanceOf('\Slab\Features\Manager', $manager);
+
+	}
+
+
+	/**
+	 * Manager is singleton
+	 *
+	 * @return void
+	 */
+	public function testManagerIsSingleton() {
+
 		$manager = \Slab\Features\Manager::instance();
 
 		$this->assertInstanceOf('\Slab\Features\Manager', $manager);
@@ -29,7 +43,7 @@ class ManagerTest extends TestCase {
 
 		$this->setExpectedException('\Slab\Features\UnexpectedValueException');
 
-		$manager = \Slab\Features\Manager::instance();
+		$manager = new \Slab\Features\Manager();
 
 		$manager->get($feature_name);
 
@@ -47,7 +61,7 @@ class ManagerTest extends TestCase {
 
 		$feature = \Mockery::mock('\Slab\Features\FeatureInterface');
 
-		$manager = \Slab\Features\Manager::instance();
+		$manager = new \Slab\Features\Manager();
 		$manager->set($feature_name, $feature);
 
 		$this->assertEquals($feature, $manager->get($feature_name));
