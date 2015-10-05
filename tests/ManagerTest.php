@@ -112,4 +112,26 @@ class ManagerTest extends TestCase {
 	}
 
 
+	/**
+	 * Manager sets false Boolean Feature from Config
+	 *
+	 * @return void
+	 */
+	public function testManagerSetsFalseBooleanFeatureFromConfig() {
+
+		$feature_name = 'test-feature';
+		$rules = [
+			$feature_name => false,
+		];
+
+		$config = \Mockery::mock('\Slab\Features\ConfigInterface');
+		$config->shouldReceive('rules')->once()->andReturn($rules);
+
+		$manager = new \Slab\Features\Manager($config);
+
+		$this->assertFalse($manager->get($feature_name)->active());
+
+	}
+
+
 }
