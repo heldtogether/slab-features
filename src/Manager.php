@@ -107,7 +107,6 @@ class Manager {
 						$feature->setActive($rule);
 						$this->set($name, $feature);
 
-
 					}
 
 				}
