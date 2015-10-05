@@ -90,4 +90,26 @@ class ManagerTest extends TestCase {
 	}
 
 
+	/**
+	 * Manager sets true Boolean Feature from Config
+	 *
+	 * @return void
+	 */
+	public function testManagerSetsTrueBooleanFeatureFromConfig() {
+
+		$feature_name = 'test-feature';
+		$rules = [
+			$feature_name => true,
+		];
+
+		$config = \Mockery::mock('\Slab\Features\ConfigInterface');
+		$config->shouldReceive('rules')->once()->andReturn($rules);
+
+		$manager = new \Slab\Features\Manager($config);
+
+		$this->assertTrue($manager->get($feature_name)->active());
+
+	}
+
+
 }

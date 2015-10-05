@@ -93,11 +93,28 @@ class Manager {
 
 		if ($this->config && !$this->loaded_config) {
 
+			$this->loaded_config = true;
+
 			$rules = $this->config->rules();
 
-		}
+			if ($rules) {
 
-		$this->loaded_config = true;
+				foreach ($rules as $name => $rule) {
+
+					if (is_bool($rule)) {
+
+						$feature = new BooleanFeature();
+						$feature->setActive($rule);
+						$this->set($name, $feature);
+
+
+					}
+
+				}
+
+			}
+
+		}
 
 	}
 
