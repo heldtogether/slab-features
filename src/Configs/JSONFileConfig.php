@@ -2,13 +2,22 @@
 
 namespace Slab\Features\Configs;
 
+use Slab\Features\Factory;
+use Slab\Features\Interfaces\ConfigInterface;
+
 /**
  * JSON File Config
  *
  * @package default
  * @author Josh Sephton
  */
-class JSONFileConfig implements Interfaces\ConfigInterface {
+class JSONFileConfig implements ConfigInterface {
+
+
+	/**
+	 * @var Slab\Features\Factory
+	 */
+	protected $factory;
 
 
 	/**
@@ -20,10 +29,23 @@ class JSONFileConfig implements Interfaces\ConfigInterface {
 	/**
 	 * Construct
 	 *
+	 * @param Slab\Features\Factory $factory
+	 * @return void
+	 */
+	public function __construct(Factory $factory) {
+
+		$this->factory = $factory;
+
+	}
+
+
+	/**
+	 * Set the source file of the config
+	 *
 	 * @param string $filename
 	 * @return void
 	 */
-	public function __construct($filename) {
+	public function setFilename($filename) {
 
 		$this->filename = $filename;
 
@@ -38,12 +60,21 @@ class JSONFileConfig implements Interfaces\ConfigInterface {
 	public function rules() {
 
 		$rules = NULL;
+		$json = NULL;
 
 		$string = file_get_contents($this->filename);
 
 		if ($string) {
+			$json = json_decode($string, true);
+		}
 
-			$rules = json_decode($string, true);
+		if ($json) {
+
+			$rules = array();
+
+			foreach ($json as $name => $rule) {
+				$rules[$name] = $this->factory->create($rule);
+			}
 
 		}
 
