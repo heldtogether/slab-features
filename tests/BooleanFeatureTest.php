@@ -27,7 +27,7 @@ class BooleanFeatureTest extends TestCase {
 
 		$feature = new \Slab\Features\BooleanFeature();
 
-		$this->assertInstanceOf('\Slab\Features\FeatureInterface', $feature);
+		$this->assertInstanceOf('\Slab\Features\Interfaces\FeatureInterface', $feature);
 
 	}
 

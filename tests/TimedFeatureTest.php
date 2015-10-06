@@ -39,7 +39,10 @@ class TimedFeatureTest extends TestCase {
 
 		$feature = new \Slab\Features\TimedFeature();
 
-		$this->assertInstanceOf('\Slab\Features\FeatureInterface', $feature);
+		$this->assertInstanceOf(
+			'\Slab\Features\Interfaces\FeatureInterface',
+			$feature
+		);
 
 	}
 

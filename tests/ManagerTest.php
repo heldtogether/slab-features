@@ -61,7 +61,7 @@ class ManagerTest extends TestCase {
 
 		$feature_name = 'test-feature';
 
-		$feature = \Mockery::mock('\Slab\Features\FeatureInterface');
+		$feature = \Mockery::mock('\Slab\Features\Interfaces\FeatureInterface');
 
 		$manager = new \Slab\Features\Manager();
 		$manager->set($feature_name, $feature);
@@ -80,9 +80,9 @@ class ManagerTest extends TestCase {
 
 		$feature_name = 'test-feature';
 
-		$feature = \Mockery::mock('\Slab\Features\FeatureInterface');
+		$feature = \Mockery::mock('\Slab\Features\Interfaces\FeatureInterface');
 
-		$config = \Mockery::mock('\Slab\Features\ConfigInterface');
+		$config = \Mockery::mock('\Slab\Features\Interfaces\ConfigInterface');
 		$config->shouldReceive('rules')->once();
 
 		$manager = new \Slab\Features\Manager($config);
@@ -100,12 +100,12 @@ class ManagerTest extends TestCase {
 	public function testManagerSetsFeatureFromConfig() {
 
 		$feature_name = 'test-feature';
-		$feature = \Mockery::mock('\Slab\Features\FeatureInterface');
+		$feature = \Mockery::mock('\Slab\Features\Interfaces\FeatureInterface');
 		$rules = [
 			$feature_name => $feature,
 		];
 
-		$config = \Mockery::mock('\Slab\Features\ConfigInterface');
+		$config = \Mockery::mock('\Slab\Features\Interfaces\ConfigInterface');
 		$config->shouldReceive('rules')->once()->andReturn($rules);
 
 		$manager = new \Slab\Features\Manager($config);

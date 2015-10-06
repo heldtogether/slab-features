@@ -8,7 +8,7 @@ namespace Slab\Features;
  * @package default
  * @author Josh Sephton
  */
-class BooleanFeature implements FeatureInterface {
+class BooleanFeature implements Interfaces\FeatureInterface {
 
 
 	/**

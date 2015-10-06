@@ -31,10 +31,10 @@ class Manager {
 	/**
 	 * Construct
 	 *
-	 * @param Slab\Features\ConfigInterface $config
+	 * @param Slab\Features\Interfaces\ConfigInterface $config
 	 * @return void
 	 */
-	public function __construct(ConfigInterface $config = NULL) {
+	public function __construct(Interfaces\ConfigInterface $config = NULL) {
 
 		$this->config = $config;
 		$this->loaded_config = false;
@@ -46,7 +46,7 @@ class Manager {
 	 * Get a named Feature
 	 *
 	 * @param string $name
-	 * @return Slab\Features\FeatureInterface $feature
+	 * @return Slab\Features\Interfaces\FeatureInterface $feature
 	 */
 	public function get($name) {
 
@@ -69,9 +69,9 @@ class Manager {
 	 * Set a named Feature
 	 *
 	 * @param string $name
-	 * @param Slab\Features\FeatureInterface $feature
+	 * @param Slab\Features\Interfaces\FeatureInterface $feature
 	 */
-	public function set($name, FeatureInterface $feature) {
+	public function set($name, Interfaces\FeatureInterface $feature) {
 
 		if (!is_string($name)) {
 			throw new Exceptions\InvalidArgumentException();

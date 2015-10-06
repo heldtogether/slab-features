@@ -2,7 +2,7 @@
 
 namespace Slab\Features;
 
-class JSONFileConfig implements ConfigInterface {
+class JSONFileConfig implements Interfaces\ConfigInterface {
 
 
 	/**

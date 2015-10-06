@@ -10,7 +10,7 @@ use Carbon\Carbon;
  * @package default
  * @author Josh Sephton
  */
-class TimedFeature implements FeatureInterface {
+class TimedFeature implements Interfaces\FeatureInterface {
 
 
 	/**
