@@ -67,4 +67,23 @@ class FactoryTest extends TestCase {
 	}
 
 
+	/**
+	 * Can create Timed Feature from rule
+	 *
+	 * @return void
+	 */
+	public function testCanCreateTimedFeatureFromRule() {
+
+		$rule = array(
+			'type' => 'timed',
+		);
+
+		$factory = new \Slab\Features\Factory();
+		$feature = $factory->create($rule);
+
+		$this->assertInstanceOf('\Slab\Features\TimedFeature', $feature);
+
+	}
+
+
 }
