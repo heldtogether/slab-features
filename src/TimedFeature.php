@@ -41,7 +41,7 @@ class TimedFeature implements FeatureInterface {
 
 		if (isset($rule['end_time'])) {
 
-			$this->setStartTime($rule['end_time']);
+			$this->setEndTime($rule['end_time']);
 
 		}
 

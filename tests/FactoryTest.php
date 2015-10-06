@@ -119,4 +119,26 @@ class FactoryTest extends TestCase {
 	}
 
 
+	/**
+	 * Can create Timed Feature with end time from rule
+	 *
+	 * @return void
+	 */
+	public function testCanCreateTimedFeatureWithEndTimeFromRule() {
+
+		$rule = array(
+			'type'     => 'timed',
+			'end_time' => '2015-10-05 10:20:30',
+		);
+
+		$end_time = new \Carbon\Carbon($rule['end_time']);
+
+		$factory = new \Slab\Features\Factory();
+		$feature = $factory->create($rule);
+
+		$this->assertEquals($end_time, $feature->endTime());
+
+	}
+
+
 }
