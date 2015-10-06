@@ -1,7 +1,15 @@
-<?php namespace Tests\Types;
+<?php
+
+namespace Tests\Types;
 
 use Tests\TestCase;
 
+/**
+ * Boolean Feature Tests
+ *
+ * @package default
+ * @author Josh Sephton
+ */
 class BooleanFeatureTest extends TestCase {
 
 

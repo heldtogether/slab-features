@@ -2,6 +2,12 @@
 
 use Tests\TestCase;
 
+/**
+ * Feature Manager Tests
+ *
+ * @package default
+ * @author Josh Sephton
+ */
 class ManagerTest extends TestCase {
 
 

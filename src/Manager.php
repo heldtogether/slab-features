@@ -4,6 +4,12 @@ namespace Slab\Features;
 
 use Slab\Core\Util\SingletonTrait;
 
+/**
+ * Feature Manager
+ *
+ * @package default
+ * @author Josh Sephton
+ */
 class Manager {
 
 

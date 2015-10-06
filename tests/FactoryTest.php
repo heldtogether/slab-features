@@ -2,6 +2,12 @@
 
 use Tests\TestCase;
 
+/**
+ * Feature Factory Tests
+ *
+ * @package default
+ * @author Josh Sephton
+ */
 class FactoryTest extends TestCase {
 
 

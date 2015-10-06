@@ -3,6 +3,12 @@
 use Carbon\Carbon;
 use Tests\TestCase;
 
+/**
+ * Timed Feature Tests
+ *
+ * @package default
+ * @author Josh Sephton
+ */
 class TimedFeatureTest extends TestCase {
 
 

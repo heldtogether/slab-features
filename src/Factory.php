@@ -4,6 +4,12 @@ namespace Slab\Features;
 
 use Slab\Features\Types\BooleanFeature;
 
+/**
+ * Feature Factory
+ *
+ * @package default
+ * @author Josh Sephton
+ */
 class Factory {
 
 

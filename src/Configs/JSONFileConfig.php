@@ -2,6 +2,12 @@
 
 namespace Slab\Features\Configs;
 
+/**
+ * JSON File Config
+ *
+ * @package default
+ * @author Josh Sephton
+ */
 class JSONFileConfig implements Interfaces\ConfigInterface {
 
 
