@@ -1,6 +1,7 @@
 <?php namespace Tests;
 
 use Mockery;
+use Tests\TestCase;
 
 
 class TestCase extends \PHPUnit_Framework_TestCase {

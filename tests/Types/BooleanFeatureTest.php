@@ -1,5 +1,6 @@
-<?php namespace Tests;
+<?php namespace Tests\Types;
 
+use Tests\TestCase;
 
 class BooleanFeatureTest extends TestCase {
 

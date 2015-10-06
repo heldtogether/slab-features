@@ -1,6 +1,7 @@
-<?php namespace Tests;
+<?php namespace Tests\Types;
 
 use Carbon\Carbon;
+use Tests\TestCase;
 
 class TimedFeatureTest extends TestCase {
 

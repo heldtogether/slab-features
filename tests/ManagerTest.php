@@ -1,5 +1,6 @@
 <?php namespace Tests;
 
+use Tests\TestCase;
 
 class ManagerTest extends TestCase {
 
