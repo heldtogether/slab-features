@@ -51,4 +51,20 @@ class FactoryTest extends TestCase {
 	}
 
 
+	/**
+	 * Can create False Boolean Feature from rule
+	 *
+	 * @return void
+	 */
+	public function testCanCreateFalseBooleanFeatureFromRule() {
+
+		$rule = false;
+
+		$factory = new \Slab\Features\Factory();
+
+		$this->assertFalse($factory->create($rule)->active());
+
+	}
+
+
 }
