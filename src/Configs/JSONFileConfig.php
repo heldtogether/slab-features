@@ -2,6 +2,7 @@
 
 namespace Slab\Features\Configs;
 
+use League\Flysystem\Filesystem;
 use Slab\Features\Factory;
 use Slab\Features\Interfaces\ConfigInterface;
 
@@ -21,6 +22,12 @@ class JSONFileConfig implements ConfigInterface {
 
 
 	/**
+	 * @var League\Flysystem\Filesystem
+	 */
+	protected $filesystem;
+
+
+	/**
 	 * @var string
 	 */
 	protected $filename;
@@ -32,9 +39,10 @@ class JSONFileConfig implements ConfigInterface {
 	 * @param Slab\Features\Factory $factory
 	 * @return void
 	 */
-	public function __construct(Factory $factory) {
+	public function __construct(Factory $factory, Filesystem $filesystem) {
 
 		$this->factory = $factory;
+		$this->filesystem = $filesystem;
 
 	}
 
@@ -62,7 +70,7 @@ class JSONFileConfig implements ConfigInterface {
 		$rules = NULL;
 		$json = NULL;
 
-		$string = file_get_contents($this->filename);
+		$string = $this->filesystem->read($this->filename);
 
 		if ($string) {
 			$json = json_decode($string, true);
