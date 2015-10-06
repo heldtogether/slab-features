@@ -101,13 +101,7 @@ class Manager {
 
 				foreach ($rules as $name => $rule) {
 
-					if (is_bool($rule)) {
-
-						$feature = new BooleanFeature();
-						$feature->setActive($rule);
-						$this->set($name, $feature);
-
-					}
+					$this->set($name, $rule);
 
 				}
 
