@@ -1,6 +1,6 @@
 # Slab Features
 
-The Slab Features component. Feature toggles are a main tenant of Continuous Integration. Slab Features allows you to easily turn parts of your app on and off by providing configuration at runtime.
+The Slab Features component. Feature toggles are a main tenet of Continuous Integration. Slab Features allows you to easily turn parts of your app on and off by providing configuration at runtime.
 
 ## Configuration
 
