@@ -1,8 +1,10 @@
 <?php
 
-namespace Slab\Features;
+namespace Slab\Features\Types;
 
 use Carbon\Carbon;
+use Slab\Features\Exceptions\InvalidArgumentException;
+use Slab\Features\Interfaces\FeatureInterface;
 
 /**
  * Timed Feature class
@@ -10,7 +12,7 @@ use Carbon\Carbon;
  * @package default
  * @author Josh Sephton
  */
-class TimedFeature implements Interfaces\FeatureInterface {
+class TimedFeature implements FeatureInterface {
 
 
 	/**
@@ -93,7 +95,7 @@ class TimedFeature implements Interfaces\FeatureInterface {
 		try {
 			$date = new Carbon($start_time);
 		} catch (\Exception $e) {
-			throw new Exceptions\InvalidArgumentException();
+			throw new InvalidArgumentException();
 		}
 
 		$this->start_time = $date;
@@ -124,7 +126,7 @@ class TimedFeature implements Interfaces\FeatureInterface {
 		try {
 			$date = new Carbon($end_time);
 		} catch (\Exception $e) {
-			throw new Exceptions\InvalidArgumentException();
+			throw new InvalidArgumentException();
 		}
 
 		$this->end_time = $date;

@@ -41,7 +41,10 @@ class FactoryTest extends TestCase {
 		$factory = new \Slab\Features\Factory();
 		$feature = $factory->create($rule);
 
-		$this->assertInstanceOf('\Slab\Features\BooleanFeature', $feature);
+		$this->assertInstanceOf(
+			'\Slab\Features\Types\BooleanFeature',
+			$feature
+		);
 
 	}
 
@@ -92,7 +95,10 @@ class FactoryTest extends TestCase {
 		$factory = new \Slab\Features\Factory();
 		$feature = $factory->create($rule);
 
-		$this->assertInstanceOf('\Slab\Features\TimedFeature', $feature);
+		$this->assertInstanceOf(
+			'\Slab\Features\Types\TimedFeature',
+			$feature
+		);
 
 	}
 

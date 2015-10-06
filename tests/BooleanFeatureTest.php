@@ -11,9 +11,12 @@ class BooleanFeatureTest extends TestCase {
 	 */
 	public function testCanCreateFeature() {
 
-		$feature = new \Slab\Features\BooleanFeature();
+		$feature = new \Slab\Features\Types\BooleanFeature();
 
-		$this->assertInstanceOf('\Slab\Features\BooleanFeature', $feature);
+		$this->assertInstanceOf(
+			'\Slab\Features\Types\BooleanFeature',
+			$feature
+		);
 
 	}
 
@@ -25,9 +28,12 @@ class BooleanFeatureTest extends TestCase {
 	 */
 	public function testCanCheckIfFeatureIsActive() {
 
-		$feature = new \Slab\Features\BooleanFeature();
+		$feature = new \Slab\Features\Types\BooleanFeature();
 
-		$this->assertInstanceOf('\Slab\Features\Interfaces\FeatureInterface', $feature);
+		$this->assertInstanceOf(
+			'\Slab\Features\Interfaces\FeatureInterface',
+			$feature
+		);
 
 	}
 
@@ -39,7 +45,7 @@ class BooleanFeatureTest extends TestCase {
 	 */
 	public function testFeatureIsNotActiveByDefault() {
 
-		$feature = new \Slab\Features\BooleanFeature();
+		$feature = new \Slab\Features\Types\BooleanFeature();
 
 		$this->assertFalse($feature->active());
 
@@ -53,7 +59,7 @@ class BooleanFeatureTest extends TestCase {
 	 */
 	public function testCanSetFeatureAsActive() {
 
-		$feature = new \Slab\Features\BooleanFeature();
+		$feature = new \Slab\Features\Types\BooleanFeature();
 		$feature->setActive(true);
 
 		$this->assertTrue($feature->active());

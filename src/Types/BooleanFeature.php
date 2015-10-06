@@ -1,6 +1,8 @@
 <?php
 
-namespace Slab\Features;
+namespace Slab\Features\Types;
+
+use Slab\Features\Interfaces\FeatureInterface;
 
 /**
  * Boolean Feature class
@@ -8,7 +10,7 @@ namespace Slab\Features;
  * @package default
  * @author Josh Sephton
  */
-class BooleanFeature implements Interfaces\FeatureInterface {
+class BooleanFeature implements FeatureInterface {
 
 
 	/**

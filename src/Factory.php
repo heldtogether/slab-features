@@ -2,6 +2,8 @@
 
 namespace Slab\Features;
 
+use Slab\Features\Types\BooleanFeature;
+
 class Factory {
 
 
@@ -9,7 +11,7 @@ class Factory {
 	 * @var array
 	 */
 	protected $types = array(
-		'timed' => '\Slab\Features\TimedFeature',
+		'timed' => '\Slab\Features\Types\TimedFeature',
 	);
 
 
