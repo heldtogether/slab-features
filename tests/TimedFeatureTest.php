@@ -84,7 +84,9 @@ class TimedFeatureTest extends TestCase {
 
 		$start_time = 'fbneiowbfiuoebufew';
 
-		$this->setExpectedException('\Slab\Features\InvalidArgumentException');
+		$this->setExpectedException(
+			'\Slab\Features\Exceptions\InvalidArgumentException'
+		);
 
 		$feature = new \Slab\Features\TimedFeature();
 		$feature->setStartTime($start_time);
@@ -118,7 +120,9 @@ class TimedFeatureTest extends TestCase {
 
 		$end_time = 'fbneiowbfiuoebufew';
 
-		$this->setExpectedException('\Slab\Features\InvalidArgumentException');
+		$this->setExpectedException(
+			'\Slab\Features\Exceptions\InvalidArgumentException'
+		);
 
 		$feature = new \Slab\Features\TimedFeature();
 		$feature->setEndTime($end_time);

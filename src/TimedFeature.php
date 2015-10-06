@@ -93,7 +93,7 @@ class TimedFeature implements FeatureInterface {
 		try {
 			$date = new Carbon($start_time);
 		} catch (\Exception $e) {
-			throw new InvalidArgumentException();
+			throw new Exceptions\InvalidArgumentException();
 		}
 
 		$this->start_time = $date;
@@ -124,7 +124,7 @@ class TimedFeature implements FeatureInterface {
 		try {
 			$date = new Carbon($end_time);
 		} catch (\Exception $e) {
-			throw new InvalidArgumentException();
+			throw new Exceptions\InvalidArgumentException();
 		}
 
 		$this->end_time = $date;

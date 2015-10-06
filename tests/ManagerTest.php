@@ -41,7 +41,9 @@ class ManagerTest extends TestCase {
 
 		$feature_name = 'test-feature';
 
-		$this->setExpectedException('\Slab\Features\UnexpectedValueException');
+		$this->setExpectedException(
+			'\Slab\Features\Exceptions\UnexpectedValueException'
+		);
 
 		$manager = new \Slab\Features\Manager();
 

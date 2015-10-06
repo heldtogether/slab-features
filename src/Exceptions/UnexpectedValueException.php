@@ -1,6 +1,6 @@
 <?php
 
-namespace Slab\Features;
+namespace Slab\Features\Exceptions;
 
 /**
  * Unexpected Value Exception

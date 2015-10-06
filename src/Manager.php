@@ -51,7 +51,7 @@ class Manager {
 	public function get($name) {
 
 		if (!is_string($name)) {
-			throw new InvalidArgumentException();
+			throw new Exceptions\InvalidArgumentException();
 		}
 
 		$this->loadConfig();
@@ -59,7 +59,7 @@ class Manager {
 		if (isset($this->features[$name])) {
 			return $this->features[$name];
 		} else {
-			throw new UnexpectedValueException();
+			throw new Exceptions\UnexpectedValueException();
 		}
 
 	}
@@ -74,7 +74,7 @@ class Manager {
 	public function set($name, FeatureInterface $feature) {
 
 		if (!is_string($name)) {
-			throw new InvalidArgumentException();
+			throw new Exceptions\InvalidArgumentException();
 		}
 
 		$this->loadConfig();
