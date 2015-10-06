@@ -5,6 +5,17 @@ class FactoryTest extends TestCase {
 
 
 	/**
+	 * Set up the tests
+	 *
+	 * @return void
+	 */
+	public function setUp() {
+		parent::setUp();
+		date_default_timezone_set('UTC');
+	}
+
+
+	/**
 	 * Can create Factory instance
 	 *
 	 * @return void
@@ -82,6 +93,28 @@ class FactoryTest extends TestCase {
 		$feature = $factory->create($rule);
 
 		$this->assertInstanceOf('\Slab\Features\TimedFeature', $feature);
+
+	}
+
+
+	/**
+	 * Can create Timed Feature with start time from rule
+	 *
+	 * @return void
+	 */
+	public function testCanCreateTimedFeatureWithStartTimeFromRule() {
+
+		$rule = array(
+			'type'       => 'timed',
+			'start_time' => '2015-10-05 10:20:30',
+		);
+
+		$start_time = new \Carbon\Carbon($rule['start_time']);
+
+		$factory = new \Slab\Features\Factory();
+		$feature = $factory->create($rule);
+
+		$this->assertEquals($start_time, $feature->startTime());
 
 	}
 

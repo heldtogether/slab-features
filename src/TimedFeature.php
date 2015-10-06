@@ -26,6 +26,29 @@ class TimedFeature implements FeatureInterface {
 
 
 	/**
+	 * Constuct
+	 *
+	 * @param array $rule
+	 * @return void
+	 */
+	public function __construct($rule = false) {
+
+		if (isset($rule['start_time'])) {
+
+			$this->setStartTime($rule['start_time']);
+
+		}
+
+		if (isset($rule['end_time'])) {
+
+			$this->setStartTime($rule['end_time']);
+
+		}
+
+	}
+
+
+	/**
 	 * Check if the Feature is active
 	 *
 	 * @return bool
