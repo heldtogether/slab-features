@@ -33,7 +33,6 @@ class Factory {
 		if (is_bool($rule)) {
 
 			$feature = new BooleanFeature($rule);
-			$feature->setActive($rule);
 
 		} else if ($rule['type'] && isset($this->types[$rule['type']])) {
 

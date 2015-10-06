@@ -20,11 +20,12 @@ class BooleanFeature implements FeatureInterface {
 	/**
 	 * Constuct
 	 *
+	 * @param bool $rule
 	 * @return void
 	 */
-	public function __construct() {
+	public function __construct($rule = false) {
 
-		$this->setActive(false);
+		$this->setActive($rule);
 
 	}
 
