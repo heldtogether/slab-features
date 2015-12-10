@@ -40,12 +40,14 @@ class Factory {
 
 		if (is_bool($rule)) {
 
-			$feature = new BooleanFeature($rule);
+			$feature = new BooleanFeature();
+			$feature->applyRule($rule);
 
 		} else if ($rule['type'] && isset($this->types[$rule['type']])) {
 
 			$class = $this->types[$rule['type']];
-			$feature = new $class($rule);
+			$feature = new $class();
+			$feature->applyRule($rule);
 
 		}
 

@@ -34,6 +34,19 @@ class VariantFeature implements FeatureInterface {
 
 
 	/**
+	 * Apply the rule to the feature
+	 *
+	 * @param array $rule
+	 * @return void
+	 */
+	public function applyRule($rule) {
+
+		//
+
+	}
+
+
+	/**
 	 * Check if the Feature is active
 	 *
 	 * @return bool
@@ -45,6 +58,11 @@ class VariantFeature implements FeatureInterface {
 	}
 
 
+	/**
+	 * Get the variant for the current session.
+	 *
+	 * @return string
+	 */
 	public function variant() {
 
 		return $this->bucketer->variant();

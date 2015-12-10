@@ -25,9 +25,21 @@ class BooleanFeature implements FeatureInterface {
 	 * @param bool $rule
 	 * @return void
 	 */
-	public function __construct($rule = false) {
+	public function __construct() {
 
-		$this->setActive($rule);
+		$this->setActive(false);
+
+	}
+
+	/**
+	 * Apply the rule to the feature
+	 *
+	 * @param array $rule
+	 * @return void
+	 */
+	public function applyRule($rule = false) {
+
+		$this->active = $rule;
 
 	}
 

@@ -66,8 +66,9 @@ class FactoryTest extends TestCase {
 		$rule = true;
 
 		$factory = new \Venice\Factory();
+		$feature = $factory->create($rule);
 
-		$this->assertTrue($factory->create($rule)->active());
+		$this->assertTrue($feature->active());
 
 	}
 

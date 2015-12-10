@@ -33,7 +33,20 @@ class TimedFeature implements FeatureInterface {
 	 * @param array $rule
 	 * @return void
 	 */
-	public function __construct($rule = false) {
+	public function __construct() {
+
+		//
+
+	}
+
+
+	/**
+	 * Apply the rule to the feature
+	 *
+	 * @param array $rule
+	 * @return void
+	 */
+	public function applyRule($rule) {
 
 		if (isset($rule['start_time'])) {
 
