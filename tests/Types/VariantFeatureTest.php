@@ -39,4 +39,21 @@ class VariantFeatureTest extends TestCase {
 	}
 
 
+	/**
+	 * Can check if a Feature is active
+	 *
+	 * @return void
+	 */
+	public function testCanCheckIfFeatureIsActive() {
+
+		$feature = new \Venice\Types\VariantFeature();
+
+		$this->assertInstanceOf(
+			'\Venice\Interfaces\FeatureInterface',
+			$feature
+		);
+
+	}
+
+
 }
