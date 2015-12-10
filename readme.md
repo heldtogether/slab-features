@@ -158,6 +158,41 @@ Timed features are configured to switch on and off according to a schedule. A st
 	public function setEndTime($end_time);
 ```
 
+### Variant Features
+
+Variant features are configured to bucket each session into a certain variant and persist that information between sessions.
+
+```javascript
+	{
+		'feature-name': {
+			'type': 'variant',
+			'variants': [
+				'control',
+				'variant-1',
+				'variant-2'
+			]
+		}
+	}
+```
+
+#### Methods
+
+```php
+	/**
+	 * Check if the Feature is active
+	 *
+	 * @return bool
+	 */
+	public function active();
+
+	/**
+	 * Get the variant for the current session
+	 *
+	 * @return string
+	 */
+	public function variant();
+```
+
 ## Todo
 
 - [x] Boolean feature
