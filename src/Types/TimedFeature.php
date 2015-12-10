@@ -30,7 +30,6 @@ class TimedFeature implements FeatureInterface {
 	/**
 	 * Constuct
 	 *
-	 * @param array $rule
 	 * @return void
 	 */
 	public function __construct() {

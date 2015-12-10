@@ -22,7 +22,6 @@ class BooleanFeature implements FeatureInterface {
 	/**
 	 * Constuct
 	 *
-	 * @param bool $rule
 	 * @return void
 	 */
 	public function __construct() {
