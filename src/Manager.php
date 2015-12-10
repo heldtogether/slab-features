@@ -2,6 +2,8 @@
 
 namespace Venice;
 
+use Venice\Interfaces\ConfigInterface;
+
 /**
  * Feature Manager
  *
@@ -12,9 +14,9 @@ class Manager {
 
 
 	/**
-	 * @var Venice\Config
+	 * @var array
 	 */
-	protected $config;
+	protected $configs;
 
 
 	/**
@@ -32,12 +34,26 @@ class Manager {
 	/**
 	 * Construct
 	 *
+	 * @return void
+	 */
+	public function __construct() {
+
+		$this->configs = [];
+		$this->loaded_config = true;
+		$this->features = [];
+
+	}
+
+
+	/**
+	 * Add a config
+	 *
 	 * @param Venice\Interfaces\ConfigInterface $config
 	 * @return void
 	 */
-	public function __construct(Interfaces\ConfigInterface $config = NULL) {
+	public function addConfig(ConfigInterface $config = NULL) {
 
-		$this->config = $config;
+		$this->configs[] = $config;
 		$this->loaded_config = false;
 
 	}
@@ -92,20 +108,20 @@ class Manager {
 	 */
 	protected function loadConfig() {
 
-		if ($this->config && !$this->loaded_config) {
+		if ($this->configs && !$this->loaded_config) {
 
 			$this->loaded_config = true;
 
-			$rules = $this->config->rules();
+			$rules = [];
+
+			foreach ($this->configs as $config) {
+				$rules = array_merge($rules, $config->rules());
+			}
 
 			if ($rules) {
-
 				foreach ($rules as $name => $rule) {
-
 					$this->set($name, $rule);
-
 				}
-
 			}
 
 		}

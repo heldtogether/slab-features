@@ -76,9 +76,10 @@ class ManagerTest extends TestCase {
 		$feature = \Mockery::mock('\Venice\Interfaces\FeatureInterface');
 
 		$config = \Mockery::mock('\Venice\Interfaces\ConfigInterface');
-		$config->shouldReceive('rules')->once();
+		$config->shouldReceive('rules')->once()->andReturn([]);
 
-		$manager = new \Venice\Manager($config);
+		$manager = new \Venice\Manager();
+		$manager->addConfig($config);
 		$manager->set($feature_name, $feature);
 		$manager->get($feature_name);
 
@@ -101,7 +102,8 @@ class ManagerTest extends TestCase {
 		$config = \Mockery::mock('\Venice\Interfaces\ConfigInterface');
 		$config->shouldReceive('rules')->once()->andReturn($rules);
 
-		$manager = new \Venice\Manager($config);
+		$manager = new \Venice\Manager();
+		$manager->addConfig($config);
 
 		$this->assertEquals($manager->get($feature_name), $feature);
 

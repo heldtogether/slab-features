@@ -16,7 +16,9 @@ In your app's initialisation, bind the Venice Manager and Bucketer as a singleto
 		$factory = new Venice\Factory();
 		$config = new Venice\Configs\JSONFileConfig($factory);
 		$config->setFilename('/path/to/config/file.json');
-		return new Venice\Manager($config);
+		$manager = new Venice\Manager();
+		$manager->addConfig($config);
+		return $manager;
 	});
 
 	$container->singleton('Venice\Bucketer', function(){
