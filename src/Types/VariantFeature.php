@@ -21,6 +21,18 @@ class VariantFeature implements FeatureInterface {
 
 
 	/**
+	 * @var string @experiment
+	 */
+	protected $experiment;
+
+
+	/**
+	 * @var array $variants
+	 */
+	protected $rules;
+
+
+	/**
 	 * Construct
 	 *
 	 * @param Venice\Bucketer $bucketer
@@ -36,12 +48,17 @@ class VariantFeature implements FeatureInterface {
 	/**
 	 * Apply the rule to the feature
 	 *
+	 * @param string $experiment
 	 * @param array $rule
 	 * @return void
 	 */
-	public function applyRule($rule) {
+	public function applyRule($experiment, $rule) {
 
-		//
+		$this->experiment = $experiment;
+
+		if (isset($rule['variants'])) {
+			$this->variants = $rule['variants'];
+		}
 
 	}
 
@@ -63,9 +80,9 @@ class VariantFeature implements FeatureInterface {
 	 *
 	 * @return string
 	 */
-	public function variant($experiment, array $variants) {
+	public function variant() {
 
-		return $this->bucketer->variant($experiment, $variants);
+		return $this->bucketer->variant($this->experiment, $this->variants);
 
 	}
 

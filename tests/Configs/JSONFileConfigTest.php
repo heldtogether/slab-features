@@ -46,9 +46,9 @@ class JSONFileConfigTest extends TestCase {
 
 		$factory = \Mockery::mock('\Venice\Factory');
 		$factory->shouldReceive('create')
-		        ->with($rules['feature-1']);
+		        ->with('feature-1', $rules['feature-1']);
 		$factory->shouldReceive('create')
-		        ->with($rules['feature-2']);
+		        ->with('feature-2', $rules['feature-2']);
 
 		$filesystem = \Mockery::mock('League\Flysystem\Filesystem');
 		$filesystem->shouldReceive('read')

@@ -80,8 +80,11 @@ class JSONFileConfig implements ConfigInterface {
 
 			$rules = array();
 
-			foreach ($json as $name => $rule) {
-				$rules[$name] = $this->factory->create($rule);
+			foreach ($json as $experiment => $rule) {
+				$rules[$experiment] = $this->factory->create(
+					$experiment,
+					$rule
+				);
 			}
 
 		}

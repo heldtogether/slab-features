@@ -46,7 +46,7 @@ class FactoryTest extends TestCase {
 		$rule = true;
 
 		$factory = new \Venice\Factory();
-		$feature = $factory->create($rule);
+		$feature = $factory->create('experiment-1', $rule);
 
 		$this->assertInstanceOf(
 			'\Venice\Types\BooleanFeature',
@@ -66,7 +66,7 @@ class FactoryTest extends TestCase {
 		$rule = true;
 
 		$factory = new \Venice\Factory();
-		$feature = $factory->create($rule);
+		$feature = $factory->create('experiment-1', $rule);
 
 		$this->assertTrue($feature->active());
 
@@ -83,8 +83,9 @@ class FactoryTest extends TestCase {
 		$rule = false;
 
 		$factory = new \Venice\Factory();
+		$feature = $factory->create('experiment-1', $rule);
 
-		$this->assertFalse($factory->create($rule)->active());
+		$this->assertFalse($feature->active());
 
 	}
 
@@ -101,7 +102,7 @@ class FactoryTest extends TestCase {
 		);
 
 		$factory = new \Venice\Factory();
-		$feature = $factory->create($rule);
+		$feature = $factory->create('experiment-1', $rule);
 
 		$this->assertInstanceOf(
 			'\Venice\Types\TimedFeature',
@@ -126,7 +127,7 @@ class FactoryTest extends TestCase {
 		$start_time = new \Carbon\Carbon($rule['start_time']);
 
 		$factory = new \Venice\Factory();
-		$feature = $factory->create($rule);
+		$feature = $factory->create('experiment-1', $rule);
 
 		$this->assertEquals($start_time, $feature->startTime());
 
@@ -148,7 +149,7 @@ class FactoryTest extends TestCase {
 		$end_time = new \Carbon\Carbon($rule['end_time']);
 
 		$factory = new \Venice\Factory();
-		$feature = $factory->create($rule);
+		$feature = $factory->create('experiment-1', $rule);
 
 		$this->assertEquals($end_time, $feature->endTime());
 

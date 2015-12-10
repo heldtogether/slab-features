@@ -33,10 +33,11 @@ class BooleanFeature implements FeatureInterface {
 	/**
 	 * Apply the rule to the feature
 	 *
+	 * @param string $experiment
 	 * @param array $rule
 	 * @return void
 	 */
-	public function applyRule($rule = false) {
+	public function applyRule($experiment, $rule) {
 
 		$this->active = $rule;
 

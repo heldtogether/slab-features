@@ -67,17 +67,23 @@ class VariantFeatureTest extends TestCase {
 	 */
 	public function testRequestsVariantFromBucketer() {
 
-		$experiment = 'experiement-1';
+		$experiment = 'experiment-1';
 		$variant = 'control';
-		$variants = ['control', 'variant-1'];
+		$rule = [
+			'variants' => [
+				'control',
+				'variant-1',
+			]
+		];
 
 		$bucketer = \Mockery::mock('\Venice\Bucketer');
 		$bucketer->shouldReceive('variant')->once()->andReturn($variant);
 
 		$feature = new \Venice\Types\VariantFeature($bucketer);
+		$feature->applyRule($experiment, $rule);
 
 		$this->assertEquals(
-			$feature->variant($experiment, $variants),
+			$feature->variant(),
 			$variant
 		);
 

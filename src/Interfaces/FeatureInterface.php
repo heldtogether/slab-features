@@ -14,10 +14,11 @@ interface FeatureInterface {
 	/**
 	 * Apply the rule to the feature
 	 *
+	 * @param string $experiment
 	 * @param array $rule
 	 * @return void
 	 */
-	public function applyRule($rule);
+	public function applyRule($experiment, $rule);
 
 
 	/**

@@ -32,23 +32,24 @@ class Factory {
 	 *   'param1' => ...,
 	 * );
 	 *
+	 * @param string $experiment
 	 * @param mixed $data
 	 * @return Venice\FeatureInterface
 	 */
-	public function create($rule) {
+	public function create($experiment, $rule) {
 
 		$feature = NULL;
 
 		if (is_bool($rule)) {
 
 			$feature = new BooleanFeature();
-			$feature->applyRule($rule);
+			$feature->applyRule($experiment, $rule);
 
 		} else if ($rule['type'] && isset($this->types[$rule['type']])) {
 
 			$class = $this->types[$rule['type']];
 			$feature = new $class();
-			$feature->applyRule($rule);
+			$feature->applyRule($experiment, $rule);
 
 		}
 
