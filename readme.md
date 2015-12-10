@@ -160,6 +160,6 @@ Timed features are configured to switch on and off according to a schedule. A st
 
 - [x] Boolean feature
 - [x] Timed feature
-- [ ] Variant feature (for use in A/B testing etc.)
+- [x] Variant feature (for use in A/B testing etc.)
 - [x] JSON file config
 - [ ] Database config
