@@ -6,6 +6,66 @@ Feature toggles are a main tenet of Continuous Integration. Venice allows you to
 
 Your configuration can be stored however you choose, by creating a class which implements `ConfigInterface`. A class to load your configuration from a JSON file is provided out of the box.
 
+## Usage
+
+In your app's initialisation, bind the Features Manager as a singleton.
+
+```php
+
+	$container->singleton('Venice\Manager', function(){
+
+		$factory = new Venice\Factory();
+
+		$config = new Venice\Configs\JSONFileConfig($factory);
+		$config->setFilename('/path/to/config/file.json');
+
+		$manager = new Venice\Manager($config);
+
+	});
+
+```
+
+In any class you wish to use the feature manager, inject the feature manager:
+
+```php
+	/**
+	 * Basic Controller
+	 */
+	 class Controller {
+
+		/**
+		 * @var Venice\Manager
+		 */
+		protected $features;
+
+		/**
+		 * Construct
+		 *
+		 * @param Venice\Manager $features
+		 * @return void
+		 */
+		public function __construct(Venice\Manager $features) {
+
+			$this->features = $features;
+
+		}
+
+		/**
+		 * Handle the index route.
+		 */
+		public function index() {
+
+			if ($this->features->get('feature-name')->active()) {
+
+				// Do something
+
+			}
+
+		}
+
+	}
+```
+
 ### Boolean Features
 
 Boolean features are either on or off, obviously.
@@ -88,66 +148,6 @@ Timed features are configured to switch on and off according to a schedule. A st
 	 * @return void
 	 */
 	public function setEndTime($end_time);
-```
-
-## Usage
-
-In your app's initialisation, bind the Features Manager as a singleton.
-
-```php
-
-	$container->singleton('Venice\Manager', function(){
-
-		$factory = new Venice\Factory();
-
-		$config = new Venice\Configs\JSONFileConfig($factory);
-		$config->setFilename('/path/to/config/file.json');
-
-		$manager = new Venice\Manager($config);
-
-	});
-
-```
-
-In any class you wish to use the feature manager, inject the feature manager:
-
-```php
-	/**
-	 * Basic Controller
-	 */
-	 class Controller {
-
-		/**
-		 * @var Venice\Manager
-		 */
-		protected $features;
-
-		/**
-		 * Construct
-		 *
-		 * @param Venice\Manager $features
-		 * @return void
-		 */
-		public function __construct(Venice\Manager $features) {
-
-			$this->features = $features;
-
-		}
-
-		/**
-		 * Handle the index route.
-		 */
-		public function index() {
-
-			if ($this->features->get('feature-name')->active()) {
-
-				// Do something
-
-			}
-
-		}
-
-	}
 ```
 
 ## Todo
