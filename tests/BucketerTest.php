@@ -119,7 +119,7 @@ class BucketerTest extends TestCase {
 		$session->shouldReceive('setVariant')->with($experiment, $variant)
 		        ->once();
 
-		mt_srand(99999999999999999999999); // mt_rand() == 2
+		mt_srand(9); // mt_rand() == 2
 
 		$bucketer = new \Venice\Bucketer($experiment, $variants, $session);
 		$this->assertEquals($bucketer->variant(), $variant);
