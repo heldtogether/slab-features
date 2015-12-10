@@ -21,6 +21,18 @@ In your app's initialisation, bind the Features Manager as a singleton.
 
 		$manager = new Venice\Manager($config);
 
+		return $manager;
+
+	});
+
+	$container->singleton('Venice\Bucketer', function(){
+
+		$session = new Venice\Sessions\CookieSession();
+
+		$bucketer = new Venice\Bucketer();
+
+		return $bucketer;
+
 	});
 
 ```

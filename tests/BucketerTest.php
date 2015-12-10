@@ -12,12 +12,9 @@ class BucketerTest extends TestCase {
 	 */
 	function testCanCreateBucketer() {
 
-		$experiment = 'experiment-1';
-		$variants = ['control', 'variant-1', 'variant-2'];
-
 		$session = \Mockery::mock('\Venice\Interfaces\SessionInterface');
 
-		$bucketer = new \Venice\Bucketer($experiment, $variants, $session);
+		$bucketer = new \Venice\Bucketer($session);
 
 		$this->assertInstanceOf(
 			'Venice\Bucketer',
@@ -43,8 +40,11 @@ class BucketerTest extends TestCase {
 		$session->shouldReceive('variant')->with($experiment)->once()
 		        ->andReturn($variant);
 
-		$bucketer = new \Venice\Bucketer($experiment, $variants, $session);
-		$this->assertEquals($bucketer->variant(), $variant);
+		$bucketer = new \Venice\Bucketer($session);
+		$this->assertEquals(
+			$bucketer->variant($experiment, $variants),
+			$variant
+		);
 
 	}
 
@@ -69,8 +69,11 @@ class BucketerTest extends TestCase {
 
 		mt_srand(500); // mt_rand() == 0
 
-		$bucketer = new \Venice\Bucketer($experiment, $variants, $session);
-		$this->assertEquals($bucketer->variant(), $variant);
+		$bucketer = new \Venice\Bucketer($session);
+		$this->assertEquals(
+			$bucketer->variant($experiment, $variants),
+			$variant
+		);
 
 	}
 
@@ -95,8 +98,11 @@ class BucketerTest extends TestCase {
 
 		mt_srand(0); // mt_rand() == 1
 
-		$bucketer = new \Venice\Bucketer($experiment, $variants, $session);
-		$this->assertEquals($bucketer->variant(), $variant);
+		$bucketer = new \Venice\Bucketer($session);
+		$this->assertEquals(
+			$bucketer->variant($experiment, $variants),
+			$variant
+		);
 
 	}
 
@@ -121,8 +127,11 @@ class BucketerTest extends TestCase {
 
 		mt_srand(9); // mt_rand() == 2
 
-		$bucketer = new \Venice\Bucketer($experiment, $variants, $session);
-		$this->assertEquals($bucketer->variant(), $variant);
+		$bucketer = new \Venice\Bucketer($session);
+		$this->assertEquals(
+			$bucketer->variant($experiment, $variants),
+			$variant
+		);
 
 	}
 

@@ -14,16 +14,6 @@ class Bucketer {
 
 
 	/**
-	 * @var string
-	 */
-	protected $experiment;
-
-	/**
-	 * @var array
-	 */
-	protected $variants;
-
-	/**
 	 * Venice\Interfaces\SessionInterface
 	 */
 	protected $session;
@@ -32,19 +22,11 @@ class Bucketer {
 	/**
 	 * Construct
 	 *
-	 * @param string $experiment
-	 * @param array $variants
 	 * @param Venice\Interfaces\SessionInterface $session
 	 * @return void
 	 */
-	public function __construct(
-		$experiment,
-		array $variants,
-		SessionInterface $session
-	) {
+	public function __construct(SessionInterface $session) {
 
-		$this->experiment = $experiment;
-		$this->variants = $variants;
 		$this->session = $session;
 
 	}
@@ -55,16 +37,16 @@ class Bucketer {
 	 *
 	 * @return string
 	 */
-	public function variant() {
+	public function variant($experiment, array $variants) {
 
-		$variant = $this->session->variant($this->experiment);
+		$variant = $this->session->variant($experiment);
 
 		if (!$variant) {
-			$limit = count($this->variants);
+			$limit = count($variants);
 			$index = mt_rand(0, $limit-1);
-			$variant = $this->variants[$index];
+			$variant = $variants[$index];
 
-			$this->session->setVariant($this->experiment, $variant);
+			$this->session->setVariant($experiment, $variant);
 		}
 
 		return $variant;

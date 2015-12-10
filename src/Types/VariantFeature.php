@@ -2,7 +2,7 @@
 
 namespace Venice\Types;
 
-use Venice\Interfaces\BucketerInterface;
+use Venice\Bucketer;
 use Venice\Interfaces\FeatureInterface;
 
 /**
@@ -15,7 +15,7 @@ class VariantFeature implements FeatureInterface {
 
 
 	/**
-	 * @var Venice\Interfaces\BucketerInterface
+	 * @var Venice\Bucketer
 	 */
 	protected $bucketer;
 
@@ -23,10 +23,10 @@ class VariantFeature implements FeatureInterface {
 	/**
 	 * Construct
 	 *
-	 * @param Venice\Interfaces\BucketerInterface $bucketer
+	 * @param Venice\Bucketer $bucketer
 	 * @return void
 	 */
-	public function __construct(BucketerInterface $bucketer) {
+	public function __construct(Bucketer $bucketer) {
 
 		$this->bucketer = $bucketer;
 
@@ -63,9 +63,9 @@ class VariantFeature implements FeatureInterface {
 	 *
 	 * @return string
 	 */
-	public function variant() {
+	public function variant($experiment, array $variants) {
 
-		return $this->bucketer->variant();
+		return $this->bucketer->variant($experiment, $variants);
 
 	}
 

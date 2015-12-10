@@ -29,7 +29,7 @@ class VariantFeatureTest extends TestCase {
 	 */
 	public function testCanCreateFeature() {
 
-		$bucketer = \Mockery::mock('\Venice\Interfaces\BucketerInterface');
+		$bucketer = \Mockery::mock('\Venice\Bucketer');
 
 		$feature = new \Venice\Types\VariantFeature($bucketer);
 
@@ -48,7 +48,7 @@ class VariantFeatureTest extends TestCase {
 	 */
 	public function testCanCheckIfFeatureIsActive() {
 
-		$bucketer = \Mockery::mock('\Venice\Interfaces\BucketerInterface');
+		$bucketer = \Mockery::mock('\Venice\Bucketer');
 
 		$feature = new \Venice\Types\VariantFeature($bucketer);
 
@@ -67,14 +67,19 @@ class VariantFeatureTest extends TestCase {
 	 */
 	public function testRequestsVariantFromBucketer() {
 
+		$experiment = 'experiement-1';
 		$variant = 'control';
+		$variants = ['control', 'variant-1'];
 
-		$bucketer = \Mockery::mock('\Venice\Interfaces\BucketerInterface');
+		$bucketer = \Mockery::mock('\Venice\Bucketer');
 		$bucketer->shouldReceive('variant')->once()->andReturn($variant);
 
 		$feature = new \Venice\Types\VariantFeature($bucketer);
 
-		$this->assertEquals($feature->variant(), $variant);
+		$this->assertEquals(
+			$feature->variant($experiment, $variants),
+			$variant
+		);
 
 	}
 

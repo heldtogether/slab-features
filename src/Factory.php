@@ -18,6 +18,7 @@ class Factory {
 	 */
 	protected $types = array(
 		'timed' => '\Venice\Types\TimedFeature',
+		'variant' => '\Venice\Types\VariantFeature',
 	);
 
 
