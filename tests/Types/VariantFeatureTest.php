@@ -29,7 +29,9 @@ class VariantFeatureTest extends TestCase {
 	 */
 	public function testCanCreateFeature() {
 
-		$feature = new \Venice\Types\VariantFeature();
+		$bucketer = \Mockery::mock('\Venice\Interfaces\BucketerInterface');
+
+		$feature = new \Venice\Types\VariantFeature($bucketer);
 
 		$this->assertInstanceOf(
 			'\Venice\Types\VariantFeature',
@@ -46,12 +48,33 @@ class VariantFeatureTest extends TestCase {
 	 */
 	public function testCanCheckIfFeatureIsActive() {
 
-		$feature = new \Venice\Types\VariantFeature();
+		$bucketer = \Mockery::mock('\Venice\Interfaces\BucketerInterface');
+
+		$feature = new \Venice\Types\VariantFeature($bucketer);
 
 		$this->assertInstanceOf(
 			'\Venice\Interfaces\FeatureInterface',
 			$feature
 		);
+
+	}
+
+
+	/**
+	 * Requests the variant from the Bucketer
+	 *
+	 * @return void
+	 */
+	public function testRequestsVariantFromBucketer() {
+
+		$variant = 'control';
+
+		$bucketer = \Mockery::mock('\Venice\Interfaces\BucketerInterface');
+		$bucketer->shouldReceive('variant')->once()->andReturn($variant);
+
+		$feature = new \Venice\Types\VariantFeature($bucketer);
+
+		$this->assertEquals($feature->variant(), $variant);
 
 	}
 
