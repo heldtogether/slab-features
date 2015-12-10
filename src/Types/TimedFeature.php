@@ -1,10 +1,10 @@
 <?php
 
-namespace Slab\Features\Types;
+namespace Venice\Types;
 
 use Carbon\Carbon;
-use Slab\Features\Exceptions\InvalidArgumentException;
-use Slab\Features\Interfaces\FeatureInterface;
+use Venice\Exceptions\InvalidArgumentException;
+use Venice\Interfaces\FeatureInterface;
 
 /**
  * Timed Feature class

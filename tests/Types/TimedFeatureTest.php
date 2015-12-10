@@ -30,10 +30,10 @@ class TimedFeatureTest extends TestCase {
 	 */
 	public function testCanCreateFeature() {
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 
 		$this->assertInstanceOf(
-			'\Slab\Features\Types\TimedFeature',
+			'\Venice\Types\TimedFeature',
 			$feature
 		);
 
@@ -47,10 +47,10 @@ class TimedFeatureTest extends TestCase {
 	 */
 	public function testCanCheckIfFeatureIsActive() {
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 
 		$this->assertInstanceOf(
-			'\Slab\Features\Interfaces\FeatureInterface',
+			'\Venice\Interfaces\FeatureInterface',
 			$feature
 		);
 
@@ -64,7 +64,7 @@ class TimedFeatureTest extends TestCase {
 	 */
 	public function testFeatureIsNotActiveByDefault() {
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 
 		$this->assertTrue($feature->active());
 
@@ -80,7 +80,7 @@ class TimedFeatureTest extends TestCase {
 
 		$start_time = '2015-10-03 00:00:00';
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 		$feature->setStartTime($start_time);
 
 		$this->assertEquals($start_time, $feature->startTime());
@@ -98,10 +98,10 @@ class TimedFeatureTest extends TestCase {
 		$start_time = 'fbneiowbfiuoebufew';
 
 		$this->setExpectedException(
-			'\Slab\Features\Exceptions\InvalidArgumentException'
+			'\Venice\Exceptions\InvalidArgumentException'
 		);
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 		$feature->setStartTime($start_time);
 
 	}
@@ -116,7 +116,7 @@ class TimedFeatureTest extends TestCase {
 
 		$end_time = '2015-10-03 00:00:00';
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 		$feature->setEndTime($end_time);
 
 		$this->assertEquals($end_time, $feature->endTime());
@@ -134,10 +134,10 @@ class TimedFeatureTest extends TestCase {
 		$end_time = 'fbneiowbfiuoebufew';
 
 		$this->setExpectedException(
-			'\Slab\Features\Exceptions\InvalidArgumentException'
+			'\Venice\Exceptions\InvalidArgumentException'
 		);
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 		$feature->setEndTime($end_time);
 
 	}
@@ -155,7 +155,7 @@ class TimedFeatureTest extends TestCase {
 
 		$start_time = '2020-01-01 00:00:00';
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 		$feature->setStartTime($start_time);
 
 		$this->assertFalse($feature->active());
@@ -175,7 +175,7 @@ class TimedFeatureTest extends TestCase {
 
 		$start_time = '1970-01-01 00:00:00';
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 		$feature->setStartTime($start_time);
 
 		$this->assertTrue($feature->active());
@@ -195,7 +195,7 @@ class TimedFeatureTest extends TestCase {
 
 		$end_time = '2020-01-01 00:00:00';
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 		$feature->setEndTime($end_time);
 
 		$this->assertTrue($feature->active());
@@ -215,7 +215,7 @@ class TimedFeatureTest extends TestCase {
 
 		$end_time = '1970-01-01 00:00:00';
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 		$feature->setEndTime($end_time);
 
 		$this->assertFalse($feature->active());
@@ -233,7 +233,7 @@ class TimedFeatureTest extends TestCase {
 		$start_time = '2015-10-04 00:00:00';
 		$end_time = '2015-10-06 00:00:00';
 
-		$feature = new \Slab\Features\Types\TimedFeature();
+		$feature = new \Venice\Types\TimedFeature();
 		$feature->setStartTime($start_time);
 		$feature->setEndTime($end_time);
 

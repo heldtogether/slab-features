@@ -12,16 +12,16 @@ class JSONFileConfigTest extends TestCase {
 	 */
 	function testCanCreateConfig() {
 
-		$factory = \Mockery::mock('\Slab\Features\Factory');
+		$factory = \Mockery::mock('\Venice\Factory');
 		$filesystem = \Mockery::mock('League\Flysystem\Filesystem');
 
-		$config = new \Slab\Features\Configs\JSONFileConfig(
+		$config = new \Venice\Configs\JSONFileConfig(
 			$factory,
 			$filesystem
 		);
 
 		$this->assertInstanceOf(
-			'Slab\Features\Interfaces\ConfigInterface',
+			'Venice\Interfaces\ConfigInterface',
 			$config
 		);
 
@@ -44,7 +44,7 @@ class JSONFileConfigTest extends TestCase {
 			),
 		);
 
-		$factory = \Mockery::mock('\Slab\Features\Factory');
+		$factory = \Mockery::mock('\Venice\Factory');
 		$factory->shouldReceive('create')
 		        ->with($rules['feature-1']);
 		$factory->shouldReceive('create')
@@ -56,7 +56,7 @@ class JSONFileConfigTest extends TestCase {
 		           ->with($filename)
 		           ->andReturn(json_encode($rules));
 
-		$config = new \Slab\Features\Configs\JSONFileConfig(
+		$config = new \Venice\Configs\JSONFileConfig(
 			$factory,
 			$filesystem
 		);

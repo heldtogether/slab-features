@@ -10,7 +10,7 @@
          stopOnFailure="false"
          syntaxCheck="false">
 	<testsuites>
-		<testsuite name="Slab Features Test Suite">
+		<testsuite name="Venice Test Suite">
 			<directory>tests/</directory>
 		</testsuite>
 	</testsuites>

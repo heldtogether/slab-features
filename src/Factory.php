@@ -1,8 +1,8 @@
 <?php
 
-namespace Slab\Features;
+namespace Venice;
 
-use Slab\Features\Types\BooleanFeature;
+use Venice\Types\BooleanFeature;
 
 /**
  * Feature Factory
@@ -17,7 +17,7 @@ class Factory {
 	 * @var array
 	 */
 	protected $types = array(
-		'timed' => '\Slab\Features\Types\TimedFeature',
+		'timed' => '\Venice\Types\TimedFeature',
 	);
 
 
@@ -32,7 +32,7 @@ class Factory {
 	 * );
 	 *
 	 * @param mixed $data
-	 * @return Slab\Features\FeatureInterface
+	 * @return Venice\FeatureInterface
 	 */
 	public function create($rule) {
 

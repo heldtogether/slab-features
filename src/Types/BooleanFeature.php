@@ -1,8 +1,8 @@
 <?php
 
-namespace Slab\Features\Types;
+namespace Venice\Types;
 
-use Slab\Features\Interfaces\FeatureInterface;
+use Venice\Interfaces\FeatureInterface;
 
 /**
  * Boolean Feature class

@@ -1,6 +1,6 @@
 <?php
 
-namespace Slab\Features\Interfaces;
+namespace Venice\Interfaces;
 
 /**
  * Feature Interface

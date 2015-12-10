@@ -1,6 +1,6 @@
 <?php
 
-namespace Slab\Features\Exceptions;
+namespace Venice\Exceptions;
 
 /**
  * Unexpected Value Exception

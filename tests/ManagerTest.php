@@ -18,23 +18,9 @@ class ManagerTest extends TestCase {
 	 */
 	public function testCanGetManagerInstance() {
 
-		$manager = new \Slab\Features\Manager();
+		$manager = new \Venice\Manager();
 
-		$this->assertInstanceOf('\Slab\Features\Manager', $manager);
-
-	}
-
-
-	/**
-	 * Manager is singleton
-	 *
-	 * @return void
-	 */
-	public function testManagerIsSingleton() {
-
-		$manager = \Slab\Features\Manager::instance();
-
-		$this->assertInstanceOf('\Slab\Features\Manager', $manager);
+		$this->assertInstanceOf('\Venice\Manager', $manager);
 
 	}
 
@@ -49,10 +35,10 @@ class ManagerTest extends TestCase {
 		$feature_name = 'test-feature';
 
 		$this->setExpectedException(
-			'\Slab\Features\Exceptions\UnexpectedValueException'
+			'\Venice\Exceptions\UnexpectedValueException'
 		);
 
-		$manager = new \Slab\Features\Manager();
+		$manager = new \Venice\Manager();
 
 		$manager->get($feature_name);
 
@@ -68,9 +54,9 @@ class ManagerTest extends TestCase {
 
 		$feature_name = 'test-feature';
 
-		$feature = \Mockery::mock('\Slab\Features\Interfaces\FeatureInterface');
+		$feature = \Mockery::mock('\Venice\Interfaces\FeatureInterface');
 
-		$manager = new \Slab\Features\Manager();
+		$manager = new \Venice\Manager();
 		$manager->set($feature_name, $feature);
 
 		$this->assertEquals($feature, $manager->get($feature_name));
@@ -87,12 +73,12 @@ class ManagerTest extends TestCase {
 
 		$feature_name = 'test-feature';
 
-		$feature = \Mockery::mock('\Slab\Features\Interfaces\FeatureInterface');
+		$feature = \Mockery::mock('\Venice\Interfaces\FeatureInterface');
 
-		$config = \Mockery::mock('\Slab\Features\Interfaces\ConfigInterface');
+		$config = \Mockery::mock('\Venice\Interfaces\ConfigInterface');
 		$config->shouldReceive('rules')->once();
 
-		$manager = new \Slab\Features\Manager($config);
+		$manager = new \Venice\Manager($config);
 		$manager->set($feature_name, $feature);
 		$manager->get($feature_name);
 
@@ -107,15 +93,15 @@ class ManagerTest extends TestCase {
 	public function testManagerSetsFeatureFromConfig() {
 
 		$feature_name = 'test-feature';
-		$feature = \Mockery::mock('\Slab\Features\Interfaces\FeatureInterface');
+		$feature = \Mockery::mock('\Venice\Interfaces\FeatureInterface');
 		$rules = [
 			$feature_name => $feature,
 		];
 
-		$config = \Mockery::mock('\Slab\Features\Interfaces\ConfigInterface');
+		$config = \Mockery::mock('\Venice\Interfaces\ConfigInterface');
 		$config->shouldReceive('rules')->once()->andReturn($rules);
 
-		$manager = new \Slab\Features\Manager($config);
+		$manager = new \Venice\Manager($config);
 
 		$this->assertEquals($manager->get($feature_name), $feature);
 

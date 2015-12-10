@@ -1,6 +1,6 @@
-# Slab Features
+# Venice - Multivariate Test Bed [![Build Status](https://travis-ci.org/heldtogether/venice-php.svg)](https://travis-ci.org/heldtogether/venice-php)
 
-The Slab Features component. Feature toggles are a main tenet of Continuous Integration. Slab Features allows you to easily turn parts of your app on and off by providing configuration at runtime.
+Feature toggles are a main tenet of Continuous Integration. Venice allows you to easily turn parts of your app on and off by providing configuration at runtime.
 
 ## Configuration
 
@@ -95,26 +95,18 @@ Timed features are configured to switch on and off according to a schedule. A st
 In your app's initialisation, bind the Features Manager as a singleton.
 
 ```php
-	/**
-	 * Initialize the app
-	 *
-	 * @param Slab\Core\Application
-	 * @return void
-	 */
-	function init($slab) {
 
-		$slab->singleton('Slab\Features\Manager', function(){
+	$container->singleton('Venice\Manager', function(){
 
-			$factory = new Slab\Features\Factory();
+		$factory = new Venice\Factory();
 
-			$config = new Slab\Features\Configs\JSONFileConfig($factory);
-			$config->setFilename('/path/to/config/file.json');
+		$config = new Venice\Configs\JSONFileConfig($factory);
+		$config->setFilename('/path/to/config/file.json');
 
-			$manager = new Slab\Features\Manager($config);
-
-		});
+		$manager = new Venice\Manager($config);
 
 	});
+
 ```
 
 In any class you wish to use the feature manager, inject the feature manager:
@@ -126,17 +118,17 @@ In any class you wish to use the feature manager, inject the feature manager:
 	 class Controller {
 
 		/**
-		 * @var Slab\Features\Manager
+		 * @var Venice\Manager
 		 */
 		protected $features;
 
 		/**
 		 * Construct
 		 *
-		 * @param Slab\Features\Manager $features
+		 * @param Venice\Manager $features
 		 * @return void
 		 */
-		public function __construct(Slab\Features\Manager $features) {
+		public function __construct(Venice\Manager $features) {
 
 			$this->features = $features;
 
@@ -144,8 +136,6 @@ In any class you wish to use the feature manager, inject the feature manager:
 
 		/**
 		 * Handle the index route.
-		 *
-		 * @return Slab\Core\Http\ResponseInterface
 		 */
 		public function index() {
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Slab\Features\Configs;
+namespace Venice\Configs;
 
 use League\Flysystem\Filesystem;
-use Slab\Features\Factory;
-use Slab\Features\Interfaces\ConfigInterface;
+use Venice\Factory;
+use Venice\Interfaces\ConfigInterface;
 
 /**
  * JSON File Config
@@ -16,7 +16,7 @@ class JSONFileConfig implements ConfigInterface {
 
 
 	/**
-	 * @var Slab\Features\Factory
+	 * @var Venice\Factory
 	 */
 	protected $factory;
 
@@ -36,7 +36,7 @@ class JSONFileConfig implements ConfigInterface {
 	/**
 	 * Construct
 	 *
-	 * @param Slab\Features\Factory $factory
+	 * @param Venice\Factory $factory
 	 * @return void
 	 */
 	public function __construct(Factory $factory, Filesystem $filesystem) {

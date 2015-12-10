@@ -1,8 +1,6 @@
 <?php
 
-namespace Slab\Features;
-
-use Slab\Core\Util\SingletonTrait;
+namespace Venice;
 
 /**
  * Feature Manager
@@ -13,11 +11,8 @@ use Slab\Core\Util\SingletonTrait;
 class Manager {
 
 
-	use SingletonTrait;
-
-
 	/**
-	 * @var Slab\Features\Config
+	 * @var Venice\Config
 	 */
 	protected $config;
 
@@ -37,7 +32,7 @@ class Manager {
 	/**
 	 * Construct
 	 *
-	 * @param Slab\Features\Interfaces\ConfigInterface $config
+	 * @param Venice\Interfaces\ConfigInterface $config
 	 * @return void
 	 */
 	public function __construct(Interfaces\ConfigInterface $config = NULL) {
@@ -52,7 +47,7 @@ class Manager {
 	 * Get a named Feature
 	 *
 	 * @param string $name
-	 * @return Slab\Features\Interfaces\FeatureInterface $feature
+	 * @return Venice\Interfaces\FeatureInterface $feature
 	 */
 	public function get($name) {
 
@@ -75,7 +70,7 @@ class Manager {
 	 * Set a named Feature
 	 *
 	 * @param string $name
-	 * @param Slab\Features\Interfaces\FeatureInterface $feature
+	 * @param Venice\Interfaces\FeatureInterface $feature
 	 */
 	public function set($name, Interfaces\FeatureInterface $feature) {
 

@@ -29,9 +29,9 @@ class FactoryTest extends TestCase {
 	 */
 	public function testCanCreateFactory() {
 
-		$factory = new \Slab\Features\Factory();
+		$factory = new \Venice\Factory();
 
-		$this->assertInstanceOf('\Slab\Features\Factory', $factory);
+		$this->assertInstanceOf('\Venice\Factory', $factory);
 
 	}
 
@@ -45,11 +45,11 @@ class FactoryTest extends TestCase {
 
 		$rule = true;
 
-		$factory = new \Slab\Features\Factory();
+		$factory = new \Venice\Factory();
 		$feature = $factory->create($rule);
 
 		$this->assertInstanceOf(
-			'\Slab\Features\Types\BooleanFeature',
+			'\Venice\Types\BooleanFeature',
 			$feature
 		);
 
@@ -65,7 +65,7 @@ class FactoryTest extends TestCase {
 
 		$rule = true;
 
-		$factory = new \Slab\Features\Factory();
+		$factory = new \Venice\Factory();
 
 		$this->assertTrue($factory->create($rule)->active());
 
@@ -81,7 +81,7 @@ class FactoryTest extends TestCase {
 
 		$rule = false;
 
-		$factory = new \Slab\Features\Factory();
+		$factory = new \Venice\Factory();
 
 		$this->assertFalse($factory->create($rule)->active());
 
@@ -99,11 +99,11 @@ class FactoryTest extends TestCase {
 			'type' => 'timed',
 		);
 
-		$factory = new \Slab\Features\Factory();
+		$factory = new \Venice\Factory();
 		$feature = $factory->create($rule);
 
 		$this->assertInstanceOf(
-			'\Slab\Features\Types\TimedFeature',
+			'\Venice\Types\TimedFeature',
 			$feature
 		);
 
@@ -124,7 +124,7 @@ class FactoryTest extends TestCase {
 
 		$start_time = new \Carbon\Carbon($rule['start_time']);
 
-		$factory = new \Slab\Features\Factory();
+		$factory = new \Venice\Factory();
 		$feature = $factory->create($rule);
 
 		$this->assertEquals($start_time, $feature->startTime());
@@ -146,7 +146,7 @@ class FactoryTest extends TestCase {
 
 		$end_time = new \Carbon\Carbon($rule['end_time']);
 
-		$factory = new \Slab\Features\Factory();
+		$factory = new \Venice\Factory();
 		$feature = $factory->create($rule);
 
 		$this->assertEquals($end_time, $feature->endTime());
