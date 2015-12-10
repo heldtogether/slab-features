@@ -50,9 +50,24 @@ class Bucketer {
 	}
 
 
+	/**
+	 * Determine the variant
+	 *
+	 * @return string
+	 */
 	public function variant() {
 
-		return $this->session->variant($this->experiment);
+		$variant = $this->session->variant($this->experiment);
+
+		if (!$variant) {
+			$limit = count($this->variants);
+			$index = mt_rand(0, $limit-1);
+			$variant = $this->variants[$index];
+
+			$this->session->setVariant($this->experiment, $variant);
+		}
+
+		return $variant;
 
 	}
 
