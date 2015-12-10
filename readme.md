@@ -8,32 +8,26 @@ Your configuration can be stored however you choose, by creating a class which i
 
 ## Usage
 
-In your app's initialisation, bind the Features Manager as a singleton.
+In your app's initialisation, bind the Venice Manager and Bucketer as a singleton and bind the session interface to your chosen concrete session class.
 
 ```php
 
 	$container->singleton('Venice\Manager', function(){
-
 		$factory = new Venice\Factory();
-
 		$config = new Venice\Configs\JSONFileConfig($factory);
 		$config->setFilename('/path/to/config/file.json');
-
-		$manager = new Venice\Manager($config);
-
-		return $manager;
-
+		return new Venice\Manager($config);
 	});
 
 	$container->singleton('Venice\Bucketer', function(){
-
 		$session = new Venice\Sessions\CookieSession();
-
-		$bucketer = new Venice\Bucketer();
-
-		return $bucketer;
-
+		$return new Venice\Bucketer($session);
 	});
+
+	$container->bind(
+		'Venice\Interfaces\SessionInterface',
+		'Venice\Sessions\CookieSession'
+	);
 
 ```
 
